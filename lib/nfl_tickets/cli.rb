@@ -5,7 +5,11 @@ class NflTickets::CLI
   end 
   
   def list_games 
-    NflTickets::API.games
+    puts "Team Games:"
+    @games = NflTickets::API.games
+    @games.each do |game|
+      puts "#{game}"
+    end 
   end 
   
   

@@ -1,3 +1,4 @@
 class NflTickets::Games
+
   
 end 
