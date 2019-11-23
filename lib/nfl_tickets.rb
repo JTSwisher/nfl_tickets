@@ -1,5 +1,5 @@
 require 'pry'
-require 'httParty'
+require 'httparty'
 
 require_relative "nfl_tickets/version"
 require_relative 'nfl_tickets/cli'

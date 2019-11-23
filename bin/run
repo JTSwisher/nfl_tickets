@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/nfl_tickets'
+
+NflTickets::CLI.new.call 
