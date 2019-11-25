@@ -1,5 +1,6 @@
 require 'pry'
 require 'httparty'
+require 'colorize'
 
 require_relative "nfl_tickets/version"
 require_relative 'nfl_tickets/cli'
