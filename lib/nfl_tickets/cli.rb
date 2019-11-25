@@ -1,17 +1,14 @@
 class NflTickets::CLI 
   
   def call 
-    list_games
-  end 
-  
-  def list_games 
-    puts "Team Games:"
-    @games = NflTickets::API.games
-    @games.each do |game|
-      puts "#{game}"
+    puts "who is your favorite team?"
+    input = gets.chomp
+    NflTickets::API.fetch(input)
+    
+    NflTickets::Games.all.each do |game|
+      puts game.team
     end 
   end 
   
-  
-  
+ 
 end 
