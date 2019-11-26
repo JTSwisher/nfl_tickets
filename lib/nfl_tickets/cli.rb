@@ -20,7 +20,7 @@ class NflTickets::CLI
   end 
   
   def game_generator 
-    puts "Who is your favorite team?"
+    puts "Who is your favorite team?".colorize(:cyan)
     input = gets.chomp
       NflTickets::API.fetch(input)
         NflTickets::Games.all.each do |game|
@@ -30,7 +30,7 @@ class NflTickets::CLI
   end 
   
   def menu 
-    puts "Would you like to see more information on this game(YES/NO)?"
+    puts "Would you like to see more information on this game(YES/NO)?".colorize(:cyan)
     input = gets.chomp
     
     case input.upcase
@@ -46,7 +46,7 @@ class NflTickets::CLI
         call 
     end 
     
-    puts "Would you like information on a different game(YES/NO)?"
+    puts "Would you like information on a different game(YES/NO)?".colorize(:cyan)
     input = gets.chomp
     
     case input.upcase
