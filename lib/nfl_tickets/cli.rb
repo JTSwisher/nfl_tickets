@@ -1,4 +1,4 @@
-+class NflTickets::CLI 
+class NflTickets::CLI 
   
   def call
     greeting
