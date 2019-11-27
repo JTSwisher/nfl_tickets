@@ -1,4 +1,4 @@
-class NflTickets::CLI 
++class NflTickets::CLI 
   
   def call
     greeting
@@ -20,6 +20,7 @@ class NflTickets::CLI
   end 
   
   def game_generator 
+    puts "Hello fellow NFL fan!".colorize(:cyan)
     puts "Which team would you like to see play?".colorize(:cyan)
     input = gets.chomp
       #implement find or create by name 
