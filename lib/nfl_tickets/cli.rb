@@ -23,11 +23,7 @@ class NflTickets::CLI
   def game_generator 
     puts "Which team would you like to see play?".colorize(:cyan)
     input = gets.chomp
-      #implement find or create by name 
-      NflTickets::API.fetch(input)
-      NflTickets::Games.all.each_with_index do |game, i|
-         puts "#{i + 1}. #{game.team}".colorize(:blue)
-      end
+      NflTickets::Games.find_or_create_by_name(input)
       menu
   end 
   
@@ -47,6 +43,7 @@ class NflTickets::CLI
       
       case input.upcase
         when "YES"
+          NflTickets::Games.destroy_all
           game_generator
         when "NO"
           puts "Thank you goodbye!".colorize(:cyan)
