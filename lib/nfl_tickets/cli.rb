@@ -17,10 +17,10 @@ class NflTickets::CLI
    00     00  00        0000     000000       00     00000000
    00     00  00        00  00   00           00           00
    00     00  00000000  00   00  00000000     00     00000000\n".colorize(:magenta)
+   puts "Hello fellow NFL fan!".colorize(:cyan)
   end 
   
   def game_generator 
-    puts "Hello fellow NFL fan!".colorize(:cyan)
     puts "Which team would you like to see play?".colorize(:cyan)
     input = gets.chomp
       #implement find or create by name 
