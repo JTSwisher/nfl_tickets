@@ -20,7 +20,7 @@ class NflTickets::CLI
   end 
   
   def game_generator 
-    puts "Who is your favorite team?".colorize(:cyan)
+    puts "Which team would you like to see play?".colorize(:cyan)
     input = gets.chomp
       #implement find or create by name 
       NflTickets::API.fetch(input)
@@ -39,6 +39,17 @@ class NflTickets::CLI
         puts " Date of game:".colorize(:blue) + " #{game.date}" 
         puts " Time of game:".colorize(:blue) + " #{game.time}" 
         puts " Tickets for purchase:".colorize(:blue) + " #{game.url}"
+      end 
+      
+      puts "Would you like information on another game(YES/NO)?".colorize(:cyan)
+      input = gets.chomp
+      
+      case input.upcase
+        when "YES"
+          game_generator
+        when "NO"
+          puts "Thank you goodbye!".colorize(:cyan)
+          exit 
       end 
   end 
     
