@@ -26,37 +26,25 @@ class NflTickets::CLI
       #####find_or_create_by_name(input)
         NflTickets::Games.all.each_with_index do |game, i|
          puts "#{i + 1}. #{game.team}".colorize(:blue)
+      
       end
+      menu
   end 
   
   def menu 
-    puts "Would you like to see more information on this game(YES/NO)?".colorize(:cyan)
-    input = gets.chomp
+    puts "Which game would you like more info about?".colorize(:cyan)
+    input = gets.chomp.to_i
     
-    case input.upcase
-      when  "YES"
-        NflTickets::Games.all.each do |game|
-          puts " Date of game:".colorize(:blue) + " #{game.date}" 
-          puts " Time of game:".colorize(:blue) + " #{game.time}" 
-          puts " Game venue:".colorize(:blue) + " #{game.venue}" 
-          puts " Game location:\n".colorize(:blue) + "    City: ".colorize(:light_blue) + "#{game.city}\n" + "    State: ".colorize(:light_blue) + "#{game.state}" 
-          puts " Tickets for purchase:".colorize(:blue) + " #{game.url}"
-        end 
-      when "NO"
-        call 
-    end 
-    
-    puts "Would you like information on a different game(YES/NO)?".colorize(:cyan)
-    input = gets.chomp
-    
-    case input.upcase
-      when "YES"
-        call
-      when "NO"
-        exit
-      end
-    end 
+      NflTickets::Games.all[input].tap do |game|
+        puts " Teams playing:".colorize(:blue) + " #{game.team}"
+        puts " Date of game:".colorize(:blue) + " #{game.date}" 
+        puts " Time of game:".colorize(:blue) + " #{game.time}" 
+        puts " Tickets for purchase:".colorize(:blue) + " #{game.url}"
+      end 
   end 
+    
+  
+end 
   
   
   
