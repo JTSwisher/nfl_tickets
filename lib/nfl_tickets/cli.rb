@@ -22,11 +22,10 @@ class NflTickets::CLI
   def game_generator 
     puts "Who is your favorite team?".colorize(:cyan)
     input = gets.chomp
+      #implement find or create by name 
       NflTickets::API.fetch(input)
-      #####find_or_create_by_name(input)
-        NflTickets::Games.all.each_with_index do |game, i|
+      NflTickets::Games.all.each_with_index do |game, i|
          puts "#{i + 1}. #{game.team}".colorize(:blue)
-      
       end
       menu
   end 
@@ -35,7 +34,7 @@ class NflTickets::CLI
     puts "Which game would you like more info about?".colorize(:cyan)
     input = gets.chomp.to_i
     
-      NflTickets::Games.all[input].tap do |game|
+      NflTickets::Games.all[input-1].tap do |game|
         puts " Teams playing:".colorize(:blue) + " #{game.team}"
         puts " Date of game:".colorize(:blue) + " #{game.date}" 
         puts " Time of game:".colorize(:blue) + " #{game.time}" 
