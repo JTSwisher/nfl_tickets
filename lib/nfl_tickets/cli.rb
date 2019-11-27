@@ -50,7 +50,6 @@ class NflTickets::CLI
           exit 
       end 
   end 
-    
   
 end 
   

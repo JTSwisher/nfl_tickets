@@ -16,8 +16,9 @@ class NflTickets::Games
   end 
   
   def self.find_by_name(team_name)
-    self.all.detect {|game| game.team == team_name} 
+    @@all.detect {|game| game.team == team_name} 
   end
+  
   
   def self.create_by_name(team_name)
     NflTickets::API.fetch(team_name) 
