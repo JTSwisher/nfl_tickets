@@ -1,16 +1,13 @@
 class NflTickets::Games
-  attr_accessor :team, :date, :time, :venue, :state, :url, :city
+  attr_accessor :team, :date, :time, :url
   
   @@all = []
   
-  def initialize(team, date, time, venue, state, url, city )
+  def initialize(team, date, time, url)
     @team = team 
     @date = date 
     @time = time 
-    @venue = venue 
-    @state = state 
     @url = url 
-    @city = city 
     @@all << self 
   end 
   

@@ -23,9 +23,9 @@ class NflTickets::CLI
     puts "Who is your favorite team?".colorize(:cyan)
     input = gets.chomp
       NflTickets::API.fetch(input)
-        NflTickets::Games.all.each do |game|
-         puts "#{game.team}".colorize(:blue)
-          menu
+      #####find_or_create_by_name(input)
+        NflTickets::Games.all.each_with_index do |game, i|
+         puts "#{i + 1}. #{game.team}".colorize(:blue)
       end
   end 
   

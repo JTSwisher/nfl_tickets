@@ -1,18 +1,34 @@
-class NflTickets::API
+  class NflTickets::API
   
-  def self.fetch(input)
-    url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=m4EQzjgxMQBTg801rcvoUStJnEQ7Emqr&keyword=#{input}&countryCode=US&promoterId=705"
-    response = HTTParty.get(url)
+      #def self.fetch(input)
+       #   url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=m4EQzjgxMQBTg801rcvoUStJnEQ7Emqr&keyword=#{input}&countryCode=US&promoterId=705"
+        #  response = HTTParty.get(url)
+         # response["_embedded"]["events"].each do |game|
+          #  team = game["name"]
+           # url = game["url"]
+            #date = game["dates"]["start"]["localDate"]
+            #time = game["dates"]["start"]["localTime"]
+            #binding.pry
+            #venue = game["_embedded"]["venues"]["name"]
+            #city = game["_embedded"]["venues"]["city"]["name"]
+            #state = game["_embedded"]["venues"]["state"]["name"]
+            #NflTickets::Games.new(team, date, time, venue, state, url, city)
+        #end 
+      #end 
+        
+        
+      def self.fetch(input)
+          url = "https://app.ticketmaster.com/discovery/v2/events.json?apikey=m4EQzjgxMQBTg801rcvoUStJnEQ7Emqr&keyword=#{input}&countryCode=US&promoterId=705"
+          response = HTTParty.get(url)
+          response.parsed_response
+          response["_embedded"]["events"].each do |game|
+            team = game["name"]
+            url = game["url"]
+            date = game["dates"]["start"]["localDate"]
+            time = game["dates"]["start"]["localTime"]
+            NflTickets::Games.new(team, date, time, url)
+        end 
+        
+      end 
       
-    team = response["_embedded"]["events"][0]["name"]
-    url = response["_embedded"]["events"][0]["url"]
-    date = response["_embedded"]["events"][0]["dates"]["start"]["localDate"]
-    time = response["_embedded"]["events"][0]["dates"]["start"]["localTime"]
-    venue = response["_embedded"]["events"][0]["_embedded"]["venues"][0]["name"]
-    city = response["_embedded"]["events"][0]["_embedded"]["venues"][0]["city"]["name"]
-    state = response["_embedded"]["events"][0]["_embedded"]["venues"][0]["state"]["name"]
-    NflTickets::Games.new(team, date, time, venue, state, url, city)
-  end 
-  
-
-end 
+ end 
