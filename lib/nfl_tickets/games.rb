@@ -22,9 +22,6 @@ class NflTickets::Games
   
   def self.create_by_name(team_name)
     NflTickets::API.fetch(team_name) 
-    NflTickets::Games.all.each_with_index do |game, i|
-      puts "#{i + 1}. #{game.team}".colorize(:blue)
-    end
   end 
   
   def self.find_or_create_by_name(team_name)

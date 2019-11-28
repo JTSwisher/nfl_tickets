@@ -24,6 +24,9 @@ class NflTickets::CLI
     puts "Which team would you like to see play?".colorize(:cyan)
     input = gets.chomp
       NflTickets::Games.find_or_create_by_name(input)
+      NflTickets::Games.all.each_with_index do |game, i|
+      puts "#{i + 1}. #{game.team}".colorize(:blue)
+    end
       menu
   end 
   
