@@ -8,15 +8,15 @@ class NflTickets::CLI
     
   def greeting 
       puts "\n0000    00  00000000  00        
-  00 00   00  00        00           
-  00  00  00  00000     00          
-  00   00 00  00        00           
-  00    0000  00        00000000\n".colorize(:magenta)
+00 00   00  00        00           
+00  00  00  00000     00          
+00   00 00  00        00           
+00    0000  00        00000000 \n".colorize(:magenta)
       puts "00000000  00  00000000  00   00  00000000  00000000  00000000
-     00     00  00        00  00   00           00     00
-     00     00  00        0000     000000       00     00000000
-     00     00  00        00  00   00           00           00
-     00     00  00000000  00   00  00000000     00     00000000\n".colorize(:magenta)
+   00     00  00        00  00   00           00     00
+   00     00  00        0000     000000       00     00000000
+   00     00  00        00  00   00           00           00
+   00     00  00000000  00   00  00000000     00     00000000\n".colorize(:magenta)
      puts "Hello fellow NFL fan!".colorize(:cyan)
   end 
     
@@ -53,6 +53,10 @@ class NflTickets::CLI
         when "NO"
           puts "Thank you goodbye!".colorize(:cyan)
           exit 
+        else
+          puts "That input is not recognized.".colorize(:red)
+          NflTickets::Games.destroy_all
+          game_generator
       end 
     end 
 end 
