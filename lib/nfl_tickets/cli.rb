@@ -21,6 +21,7 @@ class NflTickets::CLI
   end 
     
   def game_generator 
+    puts ""
     puts "Which team would you like to see play?".colorize(:cyan)
     input = gets.chomp
       NflTickets::Games.find_or_create_by_name(input)
@@ -31,6 +32,7 @@ class NflTickets::CLI
   end 
     
   def menu 
+    puts ""
     puts "Which game would you like more info about?".colorize(:cyan)
     input = gets.chomp.to_i
       
@@ -42,7 +44,8 @@ class NflTickets::CLI
         puts " Game location:".colorize(:blue) + " #{game.city}," + " #{game.state}"
         puts " Tickets for purchase:".colorize(:blue) + " #{game.url}"
       end 
-        
+      
+      puts ""  
       puts "Would you like information on another game(YES/NO)?".colorize(:cyan)
       input = gets.chomp
         
@@ -54,7 +57,7 @@ class NflTickets::CLI
           puts "Thank you goodbye!".colorize(:cyan)
           exit 
         else
-          puts "That input is not recognized.".colorize(:red)
+          puts "Sorry, that input is not recognized.".colorize(:red)
           NflTickets::Games.destroy_all
           game_generator
       end 
