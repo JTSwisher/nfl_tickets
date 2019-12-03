@@ -25,8 +25,4 @@ class NflTickets::Games
       NflTickets::API.fetch(team_name) 
     end 
       
-    
-   # def self.destroy_all
-   #   self.all.clear 
-   # end 
 end 
