@@ -19,7 +19,9 @@ class NflTickets::Games
     end 
       
     def self.find_by_name(team_name)
-      @@all.detect {|game| game.team == team_name} 
+      @@all.detect do |game| 
+        game.team.include?(team_name)
+     end 
     end
       
       
@@ -31,7 +33,7 @@ class NflTickets::Games
       self.find_by_name(team_name) || self.create_by_name(team_name)
     end 
     
-    def self.destroy_all
-      self.all.clear 
-    end 
+   # def self.destroy_all
+   #   self.all.clear 
+   # end 
 end 
