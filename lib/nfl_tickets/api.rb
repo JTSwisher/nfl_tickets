@@ -18,5 +18,6 @@ class NflTickets::API
         NflTickets::Games.new(team, date, time, url, venue, state, city)
       end 
     end 
-  end 
+  end
+  
 end

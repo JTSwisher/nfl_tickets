@@ -1,28 +1,28 @@
 class NflTickets::Games
-    attr_accessor :team, :date, :time, :url, :venue, :state, :city
+  attr_accessor :team, :date, :time, :url, :venue, :state, :city
       
-    @@all = []
+  @@all = []
       
-    def initialize(team, date, time, url, venue, state, city)
-      @team = team 
-      @date = date 
-      @time = time 
-      @url = url 
-      @venue = venue 
-      @state = state 
-      @city = city 
-      @@all << self 
+  def initialize(team, date, time, url, venue, state, city)
+    @team = team 
+    @date = date 
+    @time = time 
+    @url = url 
+    @venue = venue 
+    @state = state 
+    @city = city 
+    @@all << self 
+  end 
+      
+  def self.all 
+    @@all.uniq do |game|
+      game.team
     end 
-      
-    def self.all 
-      @@all.uniq do |game|
-        game.team
-      end 
-    end
+  end
       
       
-    def self.create_by_name(team_name)
-      NflTickets::API.fetch(team_name) 
-    end 
+  def self.create_by_name(team_name)
+    NflTickets::API.fetch(team_name) 
+  end 
       
 end 

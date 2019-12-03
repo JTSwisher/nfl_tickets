@@ -21,21 +21,20 @@ class NflTickets::CLI
   end 
     
   def game_generator 
-    puts ""
     puts "Which team would you like to see play?".colorize(:cyan)
     input = gets.chomp.capitalize
       NflTickets::Games.create_by_name(input)
       NflTickets::Games.all.each_with_index do |game, i|
         if game.team.include?(input)
-      puts "#{i + 1}. #{game.team}".colorize(:blue)
-     end 
-    end
+          puts "#{i + 1}. #{game.team}".colorize(:blue)
+        end 
+      end
       menu
   end
     
   def menu 
     puts ""
-    puts "Which game would you like more info about?".colorize(:cyan)
+    puts "Which game number would you like more info about?".colorize(:cyan)
     input = gets.chomp.to_i
       
       NflTickets::Games.all[input-1].tap do |game|
