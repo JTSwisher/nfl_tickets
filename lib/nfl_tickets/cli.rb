@@ -26,10 +26,12 @@ class NflTickets::CLI
     input = gets.chomp.capitalize
       NflTickets::Games.find_or_create_by_name(input)
       NflTickets::Games.all.each_with_index do |game, i|
+        if game.team.include?(input)
       puts "#{i + 1}. #{game.team}".colorize(:blue)
+     end 
     end
       menu
-  end 
+  end
     
   def menu 
     puts ""

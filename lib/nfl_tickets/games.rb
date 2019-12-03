@@ -12,15 +12,17 @@ class NflTickets::Games
       @state = state 
       @city = city 
       @@all << self 
-     end 
+    end 
       
     def self.all 
-      @@all 
-    end 
+      @@all.uniq do |game|
+        game.team
+      end 
+    end
       
     def self.find_by_name(team_name)
       @@all.detect do |game| 
-        game.team.include?(team_name)
+        #game.team.include?(team_name)
      end 
     end
       
