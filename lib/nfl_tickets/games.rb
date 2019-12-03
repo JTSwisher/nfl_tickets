@@ -20,20 +20,11 @@ class NflTickets::Games
       end 
     end
       
-    def self.find_by_name(team_name)
-      @@all.detect do |game| 
-        #game.team.include?(team_name)
-     end 
-    end
-      
       
     def self.create_by_name(team_name)
       NflTickets::API.fetch(team_name) 
     end 
       
-    def self.find_or_create_by_name(team_name)
-      self.find_by_name(team_name) || self.create_by_name(team_name)
-    end 
     
    # def self.destroy_all
    #   self.all.clear 
