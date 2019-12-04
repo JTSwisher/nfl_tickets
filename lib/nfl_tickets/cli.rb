@@ -21,20 +21,19 @@ class NflTickets::CLI
   end 
     
   def game_generator 
-    puts "Which team would you like to see play?".colorize(:cyan)
+    puts "Enter the name of the team you would like to see play.".colorize(:cyan)
     input = gets.chomp.capitalize
       NflTickets::Games.create_by_name(input)
-      NflTickets::Games.all.each_with_index do |game, i|
-        if game.team.include?(input)
-          puts "#{i + 1}. #{game.team}".colorize(:blue)
-        end 
-      end
-      menu
+      select_game
   end
-    
-  def menu 
+
+  def select_game 
     puts ""
-    puts "Which game number would you like more info about?".colorize(:cyan)
+    NflTickets::Games.all.each_with_index do |game, i|
+      puts "#{i + 1}. #{game.team}".colorize(:blue) 
+    end
+    
+    puts "Select a game by number for additional information.".colorize(:cyan)
     input = gets.chomp.to_i
       
       NflTickets::Games.all[input-1].tap do |game|
@@ -45,25 +44,35 @@ class NflTickets::CLI
         puts " Game location:".colorize(:blue) + " #{game.city}," + " #{game.state}"
         puts " Tickets for purchase:".colorize(:blue) + " #{game.url}"
       end 
-      
-      puts ""  
-      puts "Would you like information on another game(YES/NO)?".colorize(:cyan)
+      menu
+  end 
+    
+  def menu 
+    puts ""  
+    puts "Enter ".colorize(:cyan) + "more ".colorize(:red) + "to see information on a different game from the current list.".colorize(:cyan) 
+    puts "Enter ".colorize(:cyan) + "search ".colorize(:red) + "to search for additional games. ".colorize(:cyan) 
+    puts "Enter ".colorize(:cyan) + "clear ".colorize(:red) + "to clear current list of games or ".colorize(:cyan) + "exit ".colorize(:red) + "to exit.".colorize(:cyan)
       input = gets.chomp
         
-      case input.upcase
-        when "YES"
-          game_generator
-        when "NO"
-          puts "Thank you goodbye!".colorize(:cyan)
-          exit 
-        else
-          puts "Sorry, that input is not recognized.".colorize(:red)
-          game_generator
+    case input.upcase
+      when "MORE"
+        select_game
+      when "SEARCH"
+        puts ""
+        game_generator
+      when "CLEAR"
+        NflTickets::Games.destroy_all
+        puts ""
+        puts "The current list of games has been cleared.".colorize(:cyan)
+        game_generator
+      when "EXIT"
+        puts "Thank you goodbye!".colorize(:cyan)
+        exit 
+      else
+        puts "Sorry, that input is not recognized.".colorize(:red)
+        menu
       end 
     end 
-end 
-  
-  
-  
+end  
   
   

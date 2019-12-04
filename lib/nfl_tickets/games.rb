@@ -24,5 +24,9 @@ class NflTickets::Games
   def self.create_by_name(team_name)
     NflTickets::API.fetch(team_name) 
   end 
+
+  def self.destroy_all 
+    @@all.clear 
+  end 
       
-end 
+end
