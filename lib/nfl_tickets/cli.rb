@@ -66,7 +66,7 @@ class NflTickets::CLI
         puts "The current list of games has been cleared.".colorize(:cyan)
         game_generator
       when "EXIT"
-        puts "Thank you goodbye!".colorize(:cyan)
+        puts "Thank you, goodbye!".colorize(:cyan)
         exit 
       else
         puts "Sorry, that input is not recognized.".colorize(:red)
