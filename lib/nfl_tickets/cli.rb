@@ -17,7 +17,7 @@ class NflTickets::CLI
    00     00  00        0000     000000       00     00000000
    00     00  00        00  00   00           00           00
    00     00  00000000  00   00  00000000     00     00000000\n".colorize(:magenta)
-     puts "Hello fellow NFL fan!".colorize(:cyan)
+     puts "Hello, fellow NFL fan!".colorize(:cyan)
   end 
     
   def game_generator 
