@@ -1,10 +1,33 @@
 # Ruby CLI NFL Ticket Generator 
 
-This program allows a user to retrieve information on NFL games based on a specific team. The user will input their desired team naem which is then used by the Ticketmaster API to retrieve infomration on all games available for that team. 
+This program allows a user to retrieve information on NFL games based on a specific team. The user will input their desired team naem which is then used by the Ticketmaster API to retrieve infomration on all games available for that team. :football:
 
-TODO: Delete this and the text above, and describe your gem
+## Dependencies
+### Install Xcode Tools
+`xcode-select --install`
+
+### Install [Homebrew](http://brew.sh/)
+`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+
+### Install [RVM](https://rvm.io/)
+`\curl -sSL https://get.rvm.io | bash -s stable`
+
+### Install [Ruby](https://www.ruby-lang.org/en/)
+`rvm install 2.6.1`
+
+### Install [Bundler](http://bundler.io/)
+`gem install bundler`
 
 ## Installation
+### Get the code
+`git clone git@github.com:JTSwisher/nfl_tickets.git`
+
+### Use the correct ruby version
+`rvm use 2.6.1`
+
+### Run program 
+`ruby bin/run`
+
 
 Add this line to your application's Gemfile:
 
