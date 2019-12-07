@@ -25,6 +25,9 @@ This program allows a user to retrieve information on NFL games based on a speci
 ### Use the correct ruby version
 `rvm use 2.6.1`
 
+### Install Dependencies
+`bundle install`
+
 ### Run program 
 `ruby bin/run`
 
