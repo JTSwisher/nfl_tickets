@@ -35,7 +35,8 @@ class NflTickets::CLI
     
     puts "Select a game by number for additional information.".colorize(:cyan)
     input = gets.chomp.to_i
-      
+     
+    if input > 0 && input <= NflTickets::Games.all.size  
       NflTickets::Games.all[input-1].tap do |game|
         puts " Teams playing:".colorize(:blue) + " #{game.team}"
         puts " Date of game:".colorize(:blue) + " #{game.date}" 
@@ -44,6 +45,10 @@ class NflTickets::CLI
         puts " Game location:".colorize(:blue) + " #{game.city}," + " #{game.state}"
         puts " Tickets for purchase:".colorize(:blue) + " #{game.url}"
       end 
+    else 
+      puts "You must enter a valid game number.".colorize(:red)
+      select_game
+    end 
       menu
   end 
     
