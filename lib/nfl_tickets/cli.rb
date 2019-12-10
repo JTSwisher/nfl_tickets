@@ -49,13 +49,13 @@ class NflTickets::CLI
     
   def menu 
     puts ""  
-    puts "Enter ".colorize(:cyan) + "more ".colorize(:red) + "to see information on a different game from the current list.".colorize(:cyan) 
+    puts "Enter ".colorize(:cyan) + "list ".colorize(:red) + "to see information on a different game from the current list.".colorize(:cyan) 
     puts "Enter ".colorize(:cyan) + "search ".colorize(:red) + "to find additional games for a different team. ".colorize(:cyan) 
     puts "Enter ".colorize(:cyan) + "clear ".colorize(:red) + "to clear current list of games or ".colorize(:cyan) + "exit ".colorize(:red) + "to exit.".colorize(:cyan)
       input = gets.chomp
         
     case input.upcase
-      when "MORE"
+      when "LIST"
         select_game
       when "SEARCH"
         puts ""
