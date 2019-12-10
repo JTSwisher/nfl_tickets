@@ -6,7 +6,7 @@ class NflTickets::API
     response.parsed_response
     
     if response["page"]["totalElements"] == 0 
-      puts "There are no active game for that team."
+      puts "There are no active game for that team.".colorize(:red)
       NflTickets::CLI.new.game_generator
     else
     response["_embedded"]["events"].each do |game|
