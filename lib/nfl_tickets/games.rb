@@ -28,5 +28,8 @@ class NflTickets::Games
   def self.destroy_all 
     @@all.clear 
   end 
+  
+  
+  
       
 end

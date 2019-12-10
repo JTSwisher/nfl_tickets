@@ -5,6 +5,10 @@ class NflTickets::API
     response = HTTParty.get(url)
     response.parsed_response
     
+    if response["page"]["totalElements"] == 0 
+      puts "There are no active game for that team."
+      NflTickets::CLI.new.game_generator
+    else
     response["_embedded"]["events"].each do |game|
       team = game["name"]
       url = game["url"]
@@ -17,7 +21,8 @@ class NflTickets::API
         city = game["city"]["name"]
         NflTickets::Games.new(team, date, time, url, venue, state, city)
       end 
-    end 
+    end
+   end
   end
   
 end
