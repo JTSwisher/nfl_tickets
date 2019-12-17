@@ -1,6 +1,6 @@
 # Ruby CLI NFL Ticket Generator 
 
-This program allows a user to retrieve information on NFL games based on a specific team. The user will input their desired team naem which is then used by the Ticketmaster API to retrieve infomration on all games available for that team. :football:
+This program allows a user to retrieve information on NFL games based on a specific team. The user will input their desired team name which is then used by the Ticketmaster API to retrieve infomration on all games available for that team. :football:
 
 ## Dependencies
 ### Install Xcode Tools
