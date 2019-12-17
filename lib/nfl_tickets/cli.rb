@@ -5,7 +5,6 @@ class NflTickets::CLI
     menu
   end 
     
-    
   def greeting 
       puts "\n0000    00  00000000  00        
 00 00   00  00        00           
@@ -36,7 +35,6 @@ class NflTickets::CLI
     
       puts "Select a game by number for additional information.".colorize(:cyan)
       input = gets.chomp.to_i
-    
     else
       puts ""
       puts "There are no games in the current list.".colorize(:red) 
@@ -58,6 +56,19 @@ class NflTickets::CLI
       select_game
     end 
   end
+
+  def clear_list 
+    if NflTickets::Games.all.size > 0 
+      NflTickets::Games.destroy_all
+        puts ""
+        puts "The current list of games has been cleared.".colorize(:cyan)
+        menu
+    else 
+      puts ""
+     puts "There are no games in the current list to clear.".colorize(:red)
+      menu
+    end 
+  end 
     
   def menu 
     puts ""  
@@ -76,10 +87,7 @@ class NflTickets::CLI
         select_game
         menu
       when "CLEAR"
-        NflTickets::Games.destroy_all
-        puts ""
-        puts "The current list of games has been cleared.".colorize(:red)
-        menu
+       clear_list
       when "EXIT"
         puts "Thank you, goodbye!".colorize(:cyan)
         exit 
@@ -90,7 +98,6 @@ class NflTickets::CLI
     end 
   end 
 
-
-end  
+end   
   
   
